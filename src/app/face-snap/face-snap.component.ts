@@ -11,22 +11,11 @@ import { FaceSnap } from '../models/face-snap.models';
 export class FaceSnapComponent implements OnInit {//! promettre à typeScript qu'on va les initialiser => vue qu'on utilise le typage strict afin d'eviter que les attributs soit undefined
   //créez proprieté personnalisé à l'aide d'un décorateur @Input
   @Input() faceSnap!: FaceSnap;
-
-  /*title!: string;
-  description!: string;
-  createdDate!: Date;
-  snaps!: number;
-  imageUrl!: string;*/
   btnText!: string;
 
   //pour intialiser ces propriété en suivant les best practices Angular => notre class doit implementer l'interface "OnInit"
   //cette méthode est appelé automatiquement par Angular au moment de la création de chaque instance du component => pr initiliser les propriété de la class
   ngOnInit(){
-    /*this.title='TestSnap';
-    this.description='TestSnap Description';
-    this.createdDate= new Date();
-    this.snaps=6;
-    this.imageUrl='./assets/img/images.png';*/
     this.btnText='Snaps';
   }
 
