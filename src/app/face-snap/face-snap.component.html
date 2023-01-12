@@ -1,0 +1,24 @@
+<!--Utiliser la methode "String interpolation"-->
+<!--<div class="face-snap-card">
+    <h1>show data with string interpolation</h1>
+    <h2>{{ title }}</h2>
+    <p>Mise en ligne le : {{ createdDate }}</p>
+    <img src="{{ imageUrl }}" alt=" {{ title }}"/>
+    <p> {{description}} </p>
+    <p> {{snaps}} </p>
+</div>-->
+
+<!--Utiliser la methode "attribute binding"-->
+<div class="face-snap-card">
+    <h1>show data with attribute binding</h1>
+    <h2>{{ faceSnap.title }}</h2>
+    <p>Mise en ligne le : {{ faceSnap.createdDate }}</p>
+    <!--ce si est une attribute binding-->
+    <img [src]="faceSnap.imageUrl" [alt]="faceSnap.title"/>
+    <p> {{ faceSnap.description }} </p>
+    <p>
+        <!--lier la méthode au clic sur le btn-->
+        <button (click)="onSnap()"> {{ btnText }} </button>
+        {{ faceSnap.snaps }} 
+    </p>
+</div>
