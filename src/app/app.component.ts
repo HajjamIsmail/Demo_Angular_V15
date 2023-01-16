@@ -8,30 +8,33 @@ import { FaceSnap } from './models/face-snap.models';
 })
 export class AppComponent implements OnInit {
 
-  SnapAngular!: FaceSnap;
-  SnapJEE!: FaceSnap;
-  SnapASP!: FaceSnap;
+  faceSnaps! : FaceSnap[];
   ngOnInit(){
-      this.SnapAngular = new FaceSnap(
-        'Angular',
-        'Test Description pour injection Angular',
-        new Date(),
-        6,
-        './assets/img/Angular.png',
-      );
-      this.SnapJEE = new FaceSnap(
-        'JEE',
-        'Test Description pour injection JEE',
-        new Date(),
-        6,
-        './assets/img/JEE.png',
-      );
-      this.SnapASP = new FaceSnap(
-        'ASP.NET',
-        'Test Description pour injection ASP.NET',
-        new Date(),
-        6,
-        './assets/img/ASP.png',
-      );
+      this.faceSnaps = [
+      {
+        title: 'Angular',
+        description: 'Test Description pour injection Angular',
+        createdDate: new Date(),
+        snaps: 100,
+        imageUrl: './assets/img/Angular.png',
+        location: 'Meknes'
+      },
+      {
+        title: 'JEE',
+        description: 'Test Description pour injection JEE',
+        createdDate: new Date(),
+        snaps: 150,
+        imageUrl: './assets/img/JEE.png',
+        location: 'Casablanca'
+      },
+      {
+        title: 'ASP.NET',
+        description: 'Test Description pour injection ASP.NET',
+        createdDate: new Date(),
+        snaps: 200,
+        imageUrl: './assets/img/ASP.png',
+        location: 'Rabat'
+      }
+    ];
   }
 }

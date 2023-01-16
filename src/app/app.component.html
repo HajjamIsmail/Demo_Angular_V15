@@ -3,6 +3,10 @@
 
 
 <!--Appliquer l'injection par Attribut binding-->
-<app-face-snap [faceSnap]="SnapAngular"></app-face-snap>
-<app-face-snap [faceSnap]="SnapASP"></app-face-snap>
-<app-face-snap [faceSnap]="SnapJEE"></app-face-snap>
+<!--<app-face-snap [faceSnap]="SnapAngular" *ngIf="SnapAngular.location && SnapAngular.snaps>=6"></app-face-snap>
+<app-face-snap [faceSnap]="SnapASP" *ngIf="SnapASP.location && SnapASP.snaps>=6"></app-face-snap>
+<app-face-snap [faceSnap]="SnapJEE" *ngIf="SnapJEE.location && SnapJEE.snaps>=6"></app-face-snap>-->
+<!--Iterer un tableau : -->
+<!--ngFor => fonctionne comme for ... of => iterer le tableau faceSnaps-->
+<!--associer l'elt du tableau à la propriété "faceSnapArray"-->
+<app-face-snap *ngFor="let faceSnapArray of faceSnaps" [faceSnap]="faceSnapArray"></app-face-snap>

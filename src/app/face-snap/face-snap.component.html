@@ -9,16 +9,33 @@
 </div>-->
 
 <!--Utiliser la methode "attribute binding"-->
-<div class="face-snap-card">
-    <h1>show data with attribute binding</h1>
-    <h2>{{ faceSnap.title }}</h2>
-    <p>Mise en ligne le : {{ faceSnap.createdDate }}</p>
+<div class="face-snap-card" [ngClass]="{ snapped: btnText === 'UnSnap' }">
+    <h2>{{ faceSnap.title | uppercase }}</h2>
+    <p>Mise en ligne : {{ faceSnap.createdDate | date: 'HH:mm MMMM - d - yyyy'}}</p>
     <!--ce si est une attribute binding-->
     <img [src]="faceSnap.imageUrl" [alt]="faceSnap.title"/>
-    <p> {{ faceSnap.description }} </p>
+    <p> {{ faceSnap.description | titlecase }} </p>
+    <p *ngIf="faceSnap.location">photo prise à {{ faceSnap.location | titlecase }} </p>
+    <!--<p *ngIf="faceSnap.location === 'Meknes'">photo prise à {{ faceSnap.location }} </p>-->
     <p>
         <!--lier la méthode au clic sur le btn-->
         <button (click)="onSnap()"> {{ btnText }} </button>
-        {{ faceSnap.snaps }} 
+        <span [ngStyle]="{ color: 'rgb(0, ' + faceSnap.snaps + ', 0)'}"> {{ faceSnap.snaps }} </span>
+        
     </p>
+    <p> {{ 123458749.36 | number }} </p>
+    <p> {{ 123458749.36 | number :'1.0-0' }} </p>
+    <p> {{ 123458749.36 | number :'1.0-1' }} </p>
+    <p> {{ 123458749.36 | number :'1.0-2' }} </p>
+
+    <p> {{ 0.3367 | percent }} </p>
+    <p> {{ 0.3367 | percent :'1.0-0' }} </p>
+    <p> {{ 0.3367 | percent :'1.0-1' }} </p>
+    <p> {{ 0.3367 | percent :'1.0-2' }} </p>
+    
+    <p> {{ 334.36 | currency }} </p>
+    <p> {{ 334.36 | currency :'EUR' }} </p>
+    <p> {{ 334.36 | currency :'EUR' : 'code' }} </p>
+    <p> {{ 334.36 | currency :'MAD' }} </p>
 </div>
+
