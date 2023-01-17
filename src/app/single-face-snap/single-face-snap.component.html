@@ -1,0 +1,17 @@
+<!--Utiliser la methode "attribute binding"-->
+<div class="face-snap-card" [ngClass]="{ snapped: btnText === 'UnSnap' }">
+    <h2>{{ faceSnap.title | uppercase }}</h2>
+    <a routerLink="/facesnaps">Back</a>
+    <p>Mise en ligne : {{ faceSnap.createdDate | date: 'HH:mm MMMM - d - yyyy'}}</p>
+    <!--ce si est une attribute binding-->
+    <img [src]="faceSnap.imageUrl" [alt]="faceSnap.title"/>
+    <p> {{ faceSnap.description | titlecase }} </p>
+    <p *ngIf="faceSnap.location">photo prise à {{ faceSnap.location | titlecase }} </p>
+    <!--<p *ngIf="faceSnap.location === 'Meknes'">photo prise à {{ faceSnap.location }} </p>-->
+    <p>
+        <!--lier la méthode au clic sur le btn-->
+        <button (click)="onSnap()"> {{ btnText }} </button>
+        <span [ngStyle]="{ color: 'rgb(0, ' + faceSnap.snaps + ', 0)'}"> {{ faceSnap.snaps }} </span>
+    </p>
+</div>
+

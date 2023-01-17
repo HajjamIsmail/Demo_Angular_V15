@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { FaceSnap } from '../models/face-snap.models';
+import { FaceSnapsService } from '../service/face-snaps.service';
 //OnInit => interface
 //Input  => faire appel à un décorateur => @Input
 
@@ -13,22 +15,30 @@ export class FaceSnapComponent implements OnInit {//! promettre à typeScript qu
   @Input() faceSnap!: FaceSnap;
   btnText!: string;
 
+  //Injecter notre service :
+  constructor(private faceSnapService: FaceSnapsService,
+              private router: Router){}
+
   //pour intialiser ces propriété en suivant les best practices Angular => notre class doit implementer l'interface "OnInit"
   //cette méthode est appelé automatiquement par Angular au moment de la création de chaque instance du component => pr initiliser les propriété de la class
   ngOnInit(){
-    this.btnText='Snaps';
+    this.btnText='Snap';
   }
 
   //Function for Snaps=> add snaps :
   //methode qui commence par 'on' => signale que cette methode répond à un event
   onSnap(){
-    if(this.btnText==='Snaps'){
-      this.faceSnap.snaps++;
+    if(this.btnText==='Snap'){
+      this.faceSnapService.snapFaceSnapById(this.faceSnap.id, 'Snap');
       this.btnText='UnSnap';
     }
     else{
-      this.faceSnap.snaps--;
-      this.btnText='Snaps';
+      this.faceSnapService.snapFaceSnapById(this.faceSnap.id, 'UnSnap');
+      this.btnText='Snap';
     }
+  }
+
+  onViewFaceSnap(){
+    this.router.navigateByUrl(`facesnaps/${this.faceSnap.id}`);
   }
 }
